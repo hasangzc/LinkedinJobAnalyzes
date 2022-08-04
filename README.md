@@ -6,11 +6,17 @@ With this project, log in to LinkedIn automatically with your user information o
 
 #### About the data brought from LinkedIn
 Columns: title, company, location, share_time, number_of_applcation, jobDescription
+
 title: Job title to be analyzed
+
 company: Company name that posted the job posting
+
 location: Location of the job
+
 share_time: About when the job posting was posted
+
 number_of_applcation: Number of job applications up to share_time
+
 jobDescription: Details about the job posting given by the job posting owner
 
 
