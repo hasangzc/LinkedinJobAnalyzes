@@ -23,7 +23,7 @@ jobDescription: Details about the job posting given by the job posting owner
 * Python (Selenium, BeautifulSoup, Pandas, Workcloud, NLTK, Matplotlib, Seaborn, Streamlit)
 
 #### Usage
-With ```pip install requirements_linux.txt``` , you can install the modules and libraries used with their versions.
+With ```pip install requirements.txt``` , you can install the modules and libraries used with their versions.
 
 You can run the code with ```streamlit run app.py``` 
 
