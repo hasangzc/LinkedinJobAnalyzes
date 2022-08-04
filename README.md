@@ -19,5 +19,7 @@ number_of_applcation: Number of job applications up to share_time
 
 jobDescription: Details about the job posting given by the job posting owner
 
+### Built with
+* Python (Selenium, BeautifulSoup, Pandas, Workcloud, NLTK, Matplotlib, Seaborn, Streamlit)
 
 <img src="project.gif" width="800" height="400"/>
