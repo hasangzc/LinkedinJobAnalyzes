@@ -145,7 +145,13 @@ class LinkedinAnalyzer:
         df['jobDescription'] = df['jobDescription'].replace(r'\s+|\\u', ' ', regex=True) 
         df["jobDescription"] = df["jobDescription"].str.replace("^\[.|.\]$","", regex=True)
         # Split the share_time column into 2 columns after "ago"(share_time', 'number_of_application)
-        df[['share_time', 'number_of_application']] = df['share_time'].str.split('ago', 1, expand=True)
+        try:
+            df[['share_time', 'number_of_application']] = df['share_time'].str.split('ago', 1, expand=True)
+        except:
+            try: 
+                df[['share_time', 'number_of_application']] = df['share_time'].str.split('önce', 1, expand=True)
+            except:
+                pass
         # Change order of columns
         df = df[['title', 'company', 'location', 'share_time', 'number_of_application', 'jobDescription']]
         # Save the prepared dataframe
