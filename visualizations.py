@@ -101,30 +101,12 @@ def average_job_applications(df):
                                         r'years?': '*365'}, regex=True)
                               .apply(pd.eval)
                )
-    
-    # Turkish
-    df['numeric_share_time(day)'] = (df['share_time'].str.extract(r'(\d+\s*\w+)')[0]
-                              .replace({r'dakika?': '*1/1440',
-                                        r'gün?': '*1', 
-                                        r'hafta?': '*7', 
-                                        r'saat?': '*1/24', 
-                                        r'ay?': '*30',  
-                                        r'yıl?': '*365'}, regex=True)
-                              .apply(pd.eval))
     df['numeric_share_time(day)'] = df['numeric_share_time(day)'].round(3)
-    try:
-        df['number_of_application_numeric'] = df['number_of_application'].str.replace('applicant', '')
-        df['number_of_application_numeric'] = df['number_of_application'].str.replace('applicants', '')
-        df['number_of_application_numeric'] = df['number_of_application_numeric'].str.replace('Over', '')
-        df["number_of_application_numeric"]  = pd.to_numeric(df['number_of_application_numeric'])
-    except:
-        try:
-            df['number_of_application_numeric'] = df['number_of_application'].str.replace('başvuru', '')
-            df['number_of_application_numeric'] = df['number_of_application'].str.replace('başvurular', '')
-            df['number_of_application_numeric'] = df['number_of_application_numeric'].str.replace("‘ün üzerinde başvuran", '')
-            df["number_of_application_numeric"]  = pd.to_numeric(df['number_of_application_numeric'])
-        except:
-            pass
+    df['number_of_application_numeric'] = df['number_of_application'].str.replace('applicant', '')
+    df['number_of_application_numeric'] = df['number_of_application'].str.replace('applicants', '')
+    df['number_of_application_numeric'] = df['number_of_application_numeric'].str.replace('Over', '')
+    df["number_of_application_numeric"]  = pd.to_numeric(df['number_of_application_numeric'])
+    
     # Fist df (ALL Data)
     df_number_app = df[["number_of_application_numeric"]]
     
