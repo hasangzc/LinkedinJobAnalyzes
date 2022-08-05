@@ -36,10 +36,10 @@ if st.button('Get Data'):
     second_left, second_right = st.columns(2)
     work_cloud(df=df, second_left=second_left)
     most_occurent_important_words(df=df, second_right=second_right)
-    try:
-        average_job_applications(df=df)
-    except:
-        pass
+    
+    average_job_applications(df=df)
+    
+    
     
     
     

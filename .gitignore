@@ -138,6 +138,8 @@ dmypy.json
 /checkpoints/
 .vscode/settings.json
 .csv
+results.csv
 
 # Notebooks
 discover.ipynb
+
