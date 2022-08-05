@@ -25,6 +25,8 @@ jobDescription: Details about the job posting given by the job posting owner
 #### Usage
 With ```pip install requirements.txt``` , you can install the modules and libraries used with their versions.
 
+**Warning: Make sure your account language is English before running the code! 
+
 You can run the code with ```streamlit run app.py``` 
 
 
