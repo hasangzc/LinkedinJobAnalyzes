@@ -1,12 +1,5 @@
 import pandas as pd
 from datetime import date
-"""
-df = pd.read_csv("./data/data.csv")
-print(df.columns)  # ['title', 'company', 'location', 'share_time', 'number_of_application', 'jobDescription']
-print(df.dtypes) # objects
-print(df.head())
-print(df['share_time'])
-"""
 
 
 def db_data_process(df):
