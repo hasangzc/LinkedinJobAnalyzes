@@ -11,7 +11,17 @@ import seaborn as sns
 from matplotlib import rcParams
 from IPython.core.pylabtools import figsize
 
+import nltk
+import ssl
 
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+nltk.download('stopwords')
+nltk.download('punkt')
 
 def states_most_number_of_jobs(df, left_col):
     rcParams['figure.figsize'] = 12,5
