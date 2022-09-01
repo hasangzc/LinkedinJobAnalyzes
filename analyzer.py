@@ -16,6 +16,18 @@ from unidecode import unidecode
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+# Configs
+web_site = 'https://www.linkedin.com/login/tr'
+email_el =  ".//input[@name='session_key' and @type='text']"
+password_el =  ".//input[@type='password']"
+login_but =  "//button[@class='btn__primary--large from__button--floating']"
+title_el =  {"class": "t-24 t-bold jobs-unified-top-card__job-title"}
+company_el =  {"class": "jobs-unified-top-card__company-name"}
+location_el =  {"class": "jobs-unified-top-card__bullet"}
+share_time_el = {"class": "jobs-unified-top-card__subtitle-secondary-grouping t-black--light"}
+
+
+
 class LinkedinAnalyzer:
     def __init__(self, email, password):
         log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -36,14 +48,14 @@ class LinkedinAnalyzer:
             driver = webdriver.Chrome(service=service)
             driver.maximize_window()
             # Get linkedin Login Page
-            driver.get('https://www.linkedin.com/login/tr')
+            driver.get(web_site)
             # Fill username and password sections with user informations
-            email = driver.find_element("xpath", ".//input[@name='session_key' and @type='text']")
+            email = driver.find_element("xpath", email_el)
             email.send_keys(self.email)
-            password = driver.find_element("xpath", ".//input[@type='password']")
+            password = driver.find_element("xpath", password_el)
             password.send_keys(self.password)
             # login button
-            driver.find_element("xpath", "//button[@class='btn__primary--large from__button--floating']").click()
+            driver.find_element("xpath", login_but).click()
             sleep(3)
             return driver
     
@@ -68,19 +80,19 @@ class LinkedinAnalyzer:
         sel = Selector(text=html)
         # Get informations about jobs(Job title, company name, jon location, number of application, job description)
         try:
-            title = soup.find("h2", {"class": "t-24 t-bold jobs-unified-top-card__job-title"}).text
+            title = soup.find("h2", title_el).text
         except:
             pass
         try:
-            company = "".join((soup.find("span", {"class": "jobs-unified-top-card__company-name"}).text).split())
+            company = "".join((soup.find("span", company_el).text).split())
         except:
             pass
         try:
-            location = "".join((soup.find("span", {"class": "jobs-unified-top-card__bullet"}).text).split())
+            location = "".join((soup.find("span", location_el).text).split())
         except:
             pass
         try: 
-            share_time = "".join((soup.find("span", {"class": "jobs-unified-top-card__subtitle-secondary-grouping t-black--light"}).text).split())
+            share_time = "".join((soup.find("span", share_time_el).text).split())
         except:
             pass
         try:

@@ -9,7 +9,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 class Frequency:
     def __init__(self):
         self.stopwords = set(stopwords.words('english') + list(punctuation))
-        self.stopwords.update(['experience', 'team', 'new', 'etc', 'amp', 'following', 'candidates', 'big', 'background','developing', 'characteristics',  'strong', 'project', 
+        self.stopwords.update(['We', 'experience', 'team', 'new', 'etc', 'amp', 'following', 'candidates', 'big', 'background','developing', 'characteristics',  'strong', 'project', 
                     'solution', 'technology', 'knowledge','skill', 'work', 'build', 'will', 'knowledge', 'application','gender', 'identity', 'equal',
                     'opportunity','related','field', 'without', 'regard', 'national', 'origin', 'religion', 'sex', 'race', 'color', 'veteran', 'status','sexual',
                     'orientation','opportunity', 'employer', 'qualified','applicant','skills', 'job', 'summary', 'advanced', 'system', 'applicants', 'receive', 'large', 'best', 'practice', 'problem'
