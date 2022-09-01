@@ -19,7 +19,7 @@ class Frequency:
                     ,'type', 'full', 'wide', 'range', 'duties', 'responsibilities', 'stakeholder', 'you', 'oral', 'written', 'ideal', 'candidate', 'ability', 'qualifications', 'well',
                     'must', 'able', 'unit', 'member', 'posted', 'today', 'service', 'clearance', 'days', 'ago', 'high', 'quality', 'level', 'every', 'use', 'case', 'additional',
                      '!','"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';','<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '.', '|', '}', '~', ',', '`',
-                     'customer', 'help', 'role', 'support', 'including', 'understanding', 'A' ,'You', 
+                     'customer', 'help', 'role', 'support', 'including', 'understanding', 'A' ,'You',  ','
              ])        
       
 
