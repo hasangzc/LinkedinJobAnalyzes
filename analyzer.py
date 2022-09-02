@@ -14,19 +14,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from unidecode import unidecode
 from webdriver_manager.chrome import ChromeDriverManager
-
-
-# Configs
-web_site = 'https://www.linkedin.com/login/tr'
-email_el =  ".//input[@name='session_key' and @type='text']"
-password_el =  ".//input[@type='password']"
-login_but =  "//button[@class='btn__primary--large from__button--floating']"
-title_el =  {"class": "t-24 t-bold jobs-unified-top-card__job-title"}
-company_el =  {"class": "jobs-unified-top-card__company-name"}
-location_el =  {"class": "jobs-unified-top-card__bullet"}
-share_time_el = {"class": "jobs-unified-top-card__subtitle-secondary-grouping t-black--light"}
-
-
+import configs
 
 class LinkedinAnalyzer:
     def __init__(self, email, password):
@@ -48,14 +36,14 @@ class LinkedinAnalyzer:
             driver = webdriver.Chrome(service=service)
             driver.maximize_window()
             # Get linkedin Login Page
-            driver.get(web_site)
+            driver.get(configs.web_site)
             # Fill username and password sections with user informations
-            email = driver.find_element("xpath", email_el)
+            email = driver.find_element("xpath",configs.email_el)
             email.send_keys(self.email)
-            password = driver.find_element("xpath", password_el)
+            password = driver.find_element("xpath", configs.password_el)
             password.send_keys(self.password)
             # login button
-            driver.find_element("xpath", login_but).click()
+            driver.find_element("xpath", configs.login_but).click()
             sleep(3)
             return driver
     
@@ -80,19 +68,19 @@ class LinkedinAnalyzer:
         sel = Selector(text=html)
         # Get informations about jobs(Job title, company name, jon location, number of application, job description)
         try:
-            title = soup.find("h2", title_el).text
+            title = soup.find("h2", configs.title_el).text
         except:
             pass
         try:
-            company = "".join((soup.find("span", company_el).text).split())
+            company = "".join((soup.find("span", configs.company_el).text).split())
         except:
             pass
         try:
-            location = "".join((soup.find("span", location_el).text).split())
+            location = "".join((soup.find("span", configs.location_el).text).split())
         except:
             pass
         try: 
-            share_time = "".join((soup.find("span", share_time_el).text).split())
+            share_time = "".join((soup.find("span", configs.share_time_el).text).split())
         except:
             pass
         try:
@@ -133,9 +121,12 @@ class LinkedinAnalyzer:
             for j in jobs:
                 sleep(3)
                 actions.move_to_element(j).perform()
-                j.find_element(By.TAG_NAME,'img').click()
-                sleep(3)
-                data.append(self.jobInformation(driver))
+                try: 
+                    j.find_element(By.TAG_NAME,'img').click()
+                    sleep(3)
+                    data.append(self.jobInformation(driver))
+                except:
+                    pass
         df = pd.DataFrame(data[1:],columns=data[0])
         df.to_csv('results.csv')
         
